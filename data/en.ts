@@ -16,6 +16,13 @@ export const en: PortfolioContent = {
       "Paragraph 2: Career highlights and technical strengths.",
       "Paragraph 3: Future goals and values you bring to a team.",
     ],
+    career: [
+      {
+        period: "2023 - Present",
+        title: "Nagoya University, School of Engineering",
+        description: "Researching optical networks",
+      },
+    ],
   },
   skills: {
     title: "Skills",

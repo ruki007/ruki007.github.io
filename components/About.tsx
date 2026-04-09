@@ -30,19 +30,34 @@ export function About() {
           </div>
         </motion.div>
 
-        {/* Description */}
+        {/* Description + Career */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="md:col-span-2 space-y-4"
+          className="md:col-span-2 space-y-6"
         >
           {t.about.description.map((paragraph, i) => (
             <p key={i} className="text-[var(--muted-foreground)] leading-relaxed">
               {paragraph}
             </p>
           ))}
+
+          {/* Career timeline */}
+          {t.about.career.length > 0 && (
+            <div className="mt-6 space-y-4">
+              <div className="border-l-2 border-[var(--accent)] pl-4 space-y-4">
+                {t.about.career.map((item, i) => (
+                  <div key={i}>
+                    <span className="text-sm text-[var(--accent)] font-medium">{item.period}</span>
+                    <h3 className="font-semibold">{item.title}</h3>
+                    <p className="text-sm text-[var(--muted-foreground)]">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

@@ -2,23 +2,30 @@ import type { PortfolioContent } from "@/lib/types";
 
 export const ja: PortfolioContent = {
   hero: {
-    greeting: "こんにちは、",
-    name: "あなたの名前",
-    title: "フルスタックエンジニア",
-    tagline: "フロントエンドからインフラまで、技術で課題を解決します",
+    greeting: "ご高覧いただきありがとうございます。",
+    name: "ruki(松永浩輝)と申します",
+    title: "名古屋大学工学部電気電子情報工学科に在籍しています",
+    tagline: "研究分野は光ネットワークです。",
     ctaWork: "プロジェクトを見る",
     ctaContact: "お問い合わせ",
   },
   about: {
-    title: "About",
+    title: "経歴",
     description: [
       "ここに自己紹介を書きます。1段落目：現在の役割と得意分野の概要。",
       "2段落目：これまでのキャリアハイライトや技術的な強み。",
       "3段落目：今後の目標や、チームで大切にしている価値観。",
     ],
+    career: [
+      {
+        period: "2023 - 現在",
+        title: "名古屋大学 工学部 電気電子情報工学科",
+        description: "光ネットワークの研究に従事",
+      },
+    ],
   },
   skills: {
-    title: "Skills",
+    title: "プログラミング言語・技術スタック",
     categories: [
       {
         title: "Frontend",
@@ -26,8 +33,7 @@ export const ja: PortfolioContent = {
           { name: "TypeScript", icon: "code" },
           { name: "React", icon: "layout" },
           { name: "Next.js", icon: "globe" },
-          { name: "Vue.js", icon: "layout" },
-          { name: "Tailwind CSS", icon: "palette" },
+          { name: "HTMLCSS", icon: "palette" },
         ],
       },
       {
@@ -35,8 +41,7 @@ export const ja: PortfolioContent = {
         skills: [
           { name: "Node.js", icon: "server" },
           { name: "Python", icon: "terminal" },
-          { name: "Go", icon: "terminal" },
-          { name: "PostgreSQL", icon: "database" },
+
         ],
       },
       {
@@ -44,8 +49,14 @@ export const ja: PortfolioContent = {
         skills: [
           { name: "Docker", icon: "container" },
           { name: "AWS", icon: "cloud" },
-          { name: "GitHub Actions", icon: "git-branch" },
-          { name: "Terraform", icon: "settings" },
+        ],
+      },
+
+      {
+        title: "others",
+        skills: [
+          { name: "C&C++", icon: "code" },
+          { name: "Rust", icon: "code" },
         ],
       },
       {
@@ -53,13 +64,13 @@ export const ja: PortfolioContent = {
         skills: [
           { name: "Git", icon: "git-branch" },
           { name: "VS Code", icon: "edit" },
-          { name: "Figma", icon: "figma" },
+          { name: "Linux", icon: "terminal" },
         ],
       },
     ],
   },
   projects: {
-    title: "Projects",
+    title: "成果物等",
     items: [
       {
         title: "プロジェクト名1",
@@ -87,7 +98,7 @@ export const ja: PortfolioContent = {
     ],
   },
   experience: {
-    title: "Experience",
+    title: "職歴",
     items: [
       {
         company: "株式会社〇〇",
@@ -99,7 +110,7 @@ export const ja: PortfolioContent = {
         ],
       },
       {
-        company: "株式会社△△",
+        company: "株式会社ART-TRA",
         role: "エンジニア",
         period: "2019 - 2022",
         achievements: [
