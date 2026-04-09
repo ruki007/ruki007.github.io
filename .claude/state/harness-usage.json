@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "updatedAt": "2026-04-09T14:40:38.296Z",
+  "skills": {
+    "brainstorm": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:00:32.671Z"
+    },
+    "brainstorming": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:00:52.067Z"
+    },
+    "write-plan": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:30:45.865Z"
+    },
+    "writing-plans": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:30:56.911Z"
+    }
+  },
+  "commands": {
+    "harness-plan": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:38:08.711Z"
+    },
+    "harness-work": {
+      "count": 1,
+      "lastUsed": "2026-04-09T14:40:38.295Z"
+    }
+  },
+  "agents": {},
+  "hooks": {
+    "session-init": {
+      "triggered": 1,
+      "blocked": 0,
+      "lastTriggered": "2026-04-09T13:59:43.963Z"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "session_id": "2f6138e4-69dd-466e-9a3b-29156f5c5fdd",
+  "parent_session_id": null,
+  "state": "stopped",
+  "state_version": 1,
+  "started_at": "2026-04-09T13:59:43Z",
+  "updated_at": "2026-04-09T14:26:57Z",
+  "resume_token": "528baa6b-0ea3-421e-a490-a8550aa9540f",
+  "event_seq": 7,
+  "last_event_id": "event-000007",
+  "fork_count": 0,
+  "orchestration": {
+    "max_state_retries": 3,
+    "retry_backoff_seconds": 10
+  },
+  "cwd": "/home/ruki/portfolio",
+  "project_name": "portfolio",
+  "prompt_seq": 1,
+  "git": {
+    "branch": "(no git)",
+    "uncommitted_changes": 0,
+    "last_commit": "none"
+  },
+  "plans": {
+    "exists": false,
+    "last_modified": 0,
+    "wip_tasks": 0,
+    "todo_tasks": 0,
+    "pending_tasks": 0,
+    "completed_tasks": 0
+  },
+  "changes_this_session": [
+    {
+      "file": "docs/superpowers/specs/2026-04-09-portfolio-design.md",
+      "action": "Write",
+      "timestamp": "2026-04-09T14:25:33Z",
+      "important": false
+    }
+  ],
+  "intent": "literal",
+  "last_message_length": 119,
+  "last_message_hash": "ed0ce4bc80c557ef",
+  "ended_at": "2026-04-09T14:26:57Z",
+  "duration_minutes": 27,
+  "memory_logged": true
+}
