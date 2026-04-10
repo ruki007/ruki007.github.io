@@ -11,17 +11,18 @@ export const en: PortfolioContent = {
   },
   about: {
     title: "About",
-    description: [
-      "Write your self-introduction here. Paragraph 1: Current role and areas of expertise.",
-      "Paragraph 2: Career highlights and technical strengths.",
-      "Paragraph 3: Future goals and values you bring to a team.",
-    ],
     career: [
       {
-        period: "2023 - Present",
+        period: "2023.4 - Present",
         title: "Nagoya University, School of Engineering",
-        description: "Researching optical networks",
       },
+      {
+        period: "2020.4 - 2023.3",
+        title: "Aichi Prefectural Ichinomiya High School",
+      },
+    ],
+    qualifications: [
+      "Add your qualifications here",
     ],
   },
   skills: {

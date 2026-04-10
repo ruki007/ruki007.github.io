@@ -35,12 +35,11 @@ export interface PortfolioContent {
   };
   about: {
     title: string;
-    description: string[];
     career: {
       period: string;
       title: string;
-      description: string;
     }[];
+    qualifications: string[];
   };
   skills: {
     title: string;

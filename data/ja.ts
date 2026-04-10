@@ -11,17 +11,18 @@ export const ja: PortfolioContent = {
   },
   about: {
     title: "経歴",
-    description: [
-      "ここに自己紹介を書きます。1段落目：現在の役割と得意分野の概要。",
-      "2段落目：これまでのキャリアハイライトや技術的な強み。",
-      "3段落目：今後の目標や、チームで大切にしている価値観。",
-    ],
     career: [
       {
-        period: "2023 - 現在",
+        period: "2023.4 - 現在",
         title: "名古屋大学 工学部 電気電子情報工学科",
-        description: "光ネットワークの研究に従事",
       },
+      {
+        period: "2020.4 - 2023.3",
+        title: "愛知県立一宮高等学校",
+      },
+    ],
+    qualifications: [
+      "ここに資格等を書いてください",
     ],
   },
   skills: {
@@ -73,16 +74,15 @@ export const ja: PortfolioContent = {
     title: "成果物等",
     items: [
       {
-        title: "プロジェクト名1",
-        description: "プロジェクトの説明をここに書きます。使用技術と課題解決のポイント。",
-        tech: ["React", "TypeScript", "Node.js"],
-        github: "https://github.com/yourname/project1",
-        live: "https://project1.example.com",
+        title: "web safari~電波内の人間と冒険にでかけよう~",
+        description: "大学の実験内でチーム開発した、東山動植物園内のwifiパケットセンサを活用したゲームです。",
+        tech: ["React", "TypeScript", "Node.js", "Python","FastAPI"],
+        github: "https://github.com/ruki007/dama.git",
         image: "/images/project1.png",
       },
       {
-        title: "プロジェクト名2",
-        description: "プロジェクトの説明をここに書きます。",
+        title: "名大非公式wiki",
+        description: "名古屋大学の学生が情報を共有するための非公式wikiサイトです。学生生活に役立つ情報やイベント情報などを提供。",
         tech: ["Next.js", "PostgreSQL", "Docker"],
         github: "https://github.com/yourname/project2",
         image: "/images/project2.png",
@@ -101,21 +101,21 @@ export const ja: PortfolioContent = {
     title: "職歴",
     items: [
       {
-        company: "株式会社〇〇",
-        role: "シニアエンジニア",
-        period: "2022 - 現在",
+        company: "NPO法人こどもプログラミング普及委員会",
+        role: "営業",
+        period: "2025.10 - 現在",
         achievements: [
-          "マイクロサービスアーキテクチャの設計・実装",
-          "CI/CDパイプラインの構築によるデプロイ頻度50%改善",
+            "マイクラプログラミングを用いた小学生向けプログラミング体験会の運営に従事。",
+            "親御さんにプログラミングの重要性を伝える役割も担い、子供たちのITリテラシー向上に貢献。",
         ],
       },
       {
         company: "株式会社ART-TRA",
         role: "エンジニア",
-        period: "2019 - 2022",
+        period: "2025.7 - 現在",
         achievements: [
-          "React + TypeScriptでのSPA開発",
-          "パフォーマンス改善でLighthouseスコア30点向上",
+            "大規模web開発のフロントエンドを主に担当。",
+          "株式会社長大様との連携事業での主導開発。フロントエンドとバックエンドの両方を担当",
         ],
       },
     ],
