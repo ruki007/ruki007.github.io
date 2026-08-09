@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
-import { Languages } from "lucide-react";
 
 export function LanguageSwitcher() {
   const { locale, setLocale } = useTranslation();
@@ -10,10 +9,9 @@ export function LanguageSwitcher() {
     <button
       onClick={() => setLocale(locale === "ja" ? "en" : "ja")}
       aria-label="Switch language"
-      className="flex items-center gap-1.5 p-2 rounded-lg hover:bg-[var(--muted)] transition-colors text-sm font-medium"
+      className="border border-rule px-2.5 py-1 font-mono text-[11px] leading-none tracking-[0.18em] transition-colors hover:border-accent hover:text-accent-text"
     >
-      <Languages size={20} />
-      {locale === "ja" ? "EN" : "日本語"}
+      {locale === "ja" ? "EN" : "JA"}
     </button>
   );
 }

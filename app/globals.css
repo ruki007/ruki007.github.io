@@ -1,41 +1,180 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens
+   墨 (ink) / 紙 (paper) / レーザー (laser lime)
+   Theme values live on :root and .dark as --c-*, and are exposed to Tailwind
+   through @theme so utilities stay reactive to the theme class.
+--------------------------------------------------------------------------- */
+
 @theme {
-  --font-sans: var(--font-inter), var(--font-noto), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho",
+    serif;
+  --font-body: var(--font-zen), "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    sans-serif;
+  --font-sans: var(--font-zen), "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-mono: var(--font-jet), ui-monospace, "SFMono-Regular", monospace;
+
+  --color-bg: var(--c-bg);
+  --color-fg: var(--c-fg);
+  --color-dim: var(--c-dim);
+  --color-rule: var(--c-rule);
+  --color-panel: var(--c-panel);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-accent-text: var(--c-accent-text);
+}
+
+:root {
+  /* 紙 — paper */
+  --c-bg: #efece4;
+  --c-fg: #16160f;
+  --c-dim: #6b695f;
+  --c-rule: rgba(22, 22, 15, 0.16);
+  --c-panel: #e4e0d5;
+  --c-accent: #c9e600;
+  --c-accent-ink: #16160f;
+  --c-accent-text: #55670a;
+  --c-photon-core: #6f8200;
+  --c-grain: 0.05;
+}
+
+.dark {
+  /* 墨 — ink */
+  --c-bg: #0b0b0c;
+  --c-fg: #efece4;
+  --c-dim: #8b8981;
+  --c-rule: rgba(239, 236, 228, 0.16);
+  --c-panel: #121214;
+  --c-accent: #d9ff4b;
+  --c-accent-ink: #0b0b0c;
+  --c-accent-text: #d9ff4b;
+  --c-photon-core: #ffffff;
+  --c-grain: 0.09;
 }
 
 @layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #0f172a;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --border: #e2e8f0;
-    --accent: #3b82f6;
-    --accent-foreground: #ffffff;
-    --card: #ffffff;
-    --card-foreground: #0f172a;
-  }
-
-  .dark {
-    --background: #0f172a;
-    --foreground: #f1f5f9;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --border: #334155;
-    --accent: #60a5fa;
-    --accent-foreground: #0f172a;
-    --card: #1e293b;
-    --card-foreground: #f1f5f9;
-  }
-
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--c-bg);
+    color: var(--c-fg);
+    font-family: var(--font-body);
+    font-feature-settings: "palt" 1;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background-color: var(--c-accent);
+    color: var(--c-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Grain — a fixed film overlay so flat colour never reads as flat
+--------------------------------------------------------------------------- */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: var(--c-grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------------------
+   Waveguide — a hairline rail with a photon packet travelling along it.
+   The signature motif: an optical link, drawn literally.
+--------------------------------------------------------------------------- */
+
+.waveguide {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background-color: var(--c-rule);
+  overflow: visible;
+}
+
+.waveguide::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 3px;
+  width: 22%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--c-accent) 55%,
+    var(--c-photon-core) 78%,
+    transparent
+  );
+  box-shadow: 0 0 14px 1px var(--c-accent);
+  animation: photon 5.2s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+/* 22%-wide packet: 355% of its own width carries it to the far end of the rail */
+@keyframes photon {
+  0% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(360%);
+    opacity: 0;
+  }
+}
+
+/* Break Japanese lines at phrase boundaries instead of anywhere (Chrome 119+) */
+.jp {
+  word-break: auto-phrase;
+  line-break: strict;
+}
+
+/* Dotted leader between a label and its value (spec-sheet typography) */
+.leader {
+  flex: 1 1 auto;
+  margin: 0 0.75rem;
+  border-bottom: 1px dotted var(--c-rule);
+  transform: translateY(-0.25rem);
+}
+
+/* Vertical writing for the section index rail */
+.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .waveguide::after {
+    animation: none;
+    opacity: 0.6;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

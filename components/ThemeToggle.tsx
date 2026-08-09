@@ -1,33 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
+import { useCallback, useSyncExternalStore } from "react";
 
+const subscribe = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+};
+
+const isDark = () => document.documentElement.classList.contains("dark");
+
+/**
+ * Ink is the default. The pre-paint script in app/layout.tsx owns the class on
+ * <html>; this button reads it as external state and flips it.
+ */
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
+  const dark = useSyncExternalStore(subscribe, isDark, () => true);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = saved === "dark" || (!saved && prefersDark);
-    setDark(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
-
-  const toggle = () => {
-    const next = !dark;
-    setDark(next);
+  const toggle = useCallback(() => {
+    const next = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      // Storage can be unavailable (private mode); the toggle still works.
+    }
+  }, []);
 
   return (
     <button
       onClick={toggle}
-      aria-label="Toggle theme"
-      className="p-2 rounded-lg hover:bg-[var(--muted)] transition-colors"
+      aria-label={dark ? "ライトテーマに切り替え" : "ダークテーマに切り替え"}
+      className="border border-rule px-2.5 py-1 font-mono text-[11px] leading-none tracking-[0.18em] transition-colors hover:border-accent hover:text-accent-text"
     >
-      {dark ? <Sun size={20} /> : <Moon size={20} />}
+      {dark ? "墨" : "紙"}
     </button>
   );
 }

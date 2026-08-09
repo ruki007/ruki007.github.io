@@ -2,31 +2,73 @@ import type { PortfolioContent } from "@/lib/types";
 
 export const en: PortfolioContent = {
   hero: {
-    greeting: "Hi, I'm ",
-    name: "Your Name",
-    title: "Full-Stack Engineer",
-    tagline: "Solving problems with technology, from frontend to infrastructure",
-    ctaWork: "View My Work",
-    ctaContact: "Contact Me",
+    greeting: "Thank you for stopping by.",
+    name: "Koki Matsunaga",
+    nameLatin: "MATSUNAGA KOKI — ruki",
+    title: "Nagoya University, School of Engineering (EEI)",
+    tagline: "Researching optical networks. Writing the web on the side.",
+    meta: [
+      { label: "FIELD", value: "Optical Networks" },
+      { label: "AFFILIATION", value: "Nagoya Univ. EEI" },
+      { label: "BASED IN", value: "Nagoya, Japan" },
+    ],
+    ctaWork: "See the work",
+    ctaContact: "Get in touch",
   },
   about: {
-    title: "About",
+    title: "Background",
+    educationLabel: "Education",
+    qualificationsLabel: "Qualifications",
     career: [
       {
-        period: "2023.4 - Present",
-        title: "Nagoya University, School of Engineering",
+        period: "2023.4 — Present",
+        title: "Nagoya University, School of Engineering, Dept. of EEI",
       },
       {
-        period: "2020.4 - 2023.3",
+        period: "2020.4 — 2023.3",
         title: "Aichi Prefectural Ichinomiya High School",
       },
     ],
     qualifications: [
-      "Add your qualifications here",
+      "TOEIC 830 (June 28, 2026)",
+      "Fundamental Information Technology Engineer (FE), May 2026",
+      "Bookkeeping Level 3 (Nissho), March 2026",
+    ],
+  },
+  research: {
+    title: "Research",
+    theme:
+      "Hybrid in-link and path protection\nfor highly parallel optical networks",
+    summary:
+      "Targeting optical networks with high link parallelism, this work studies a hybrid protection scheme that combines path protection with in-link protection, and evaluates its performance.",
+    meta: [
+      { label: "RESEARCH FIELD", value: "Optical Networks" },
+      { label: "LAB", value: "Hasegawa Lab." },
+      { label: "KEYWORDS", value: "Protection / Link Parallelism" },
+    ],
+    outputsLabel: "Publications & talks",
+    outputs: [
+      {
+        kind: "International",
+        title:
+          "Hybrid In-Link and Path Protection in Optical Networks with High Link Parallelism",
+        authors:
+          "H. Matsunaga, Y. Iida, S. Shimoi, H. Yuasa, T. Kuno, and H. Hasegawa",
+        venue:
+          "International Conference on Photonics in Switching and Computing, paper TuP1-A1.3, Valencia, Spain, September 2026",
+      },
+      {
+        kind: "Domestic",
+        title:
+          "Hybrid Path and Link Protection for Highly Parallel Optical Networks and Its Performance Evaluation",
+        authors:
+          "H. Matsunaga, Y. Iida, S. Shimoi, H. Yuasa, T. Kuno, and H. Hasegawa",
+        venue: "IEICE Technical Committee on Photonic Network (PN)",
+      },
     ],
   },
   skills: {
-    title: "Skills",
+    title: "Stack",
     categories: [
       {
         title: "Frontend",
@@ -34,8 +76,7 @@ export const en: PortfolioContent = {
           { name: "TypeScript", icon: "code" },
           { name: "React", icon: "layout" },
           { name: "Next.js", icon: "globe" },
-          { name: "Vue.js", icon: "layout" },
-          { name: "Tailwind CSS", icon: "palette" },
+          { name: "HTML / CSS", icon: "palette" },
         ],
       },
       {
@@ -43,8 +84,7 @@ export const en: PortfolioContent = {
         skills: [
           { name: "Node.js", icon: "server" },
           { name: "Python", icon: "terminal" },
-          { name: "Go", icon: "terminal" },
-          { name: "PostgreSQL", icon: "database" },
+          { name: "FastAPI", icon: "server" },
         ],
       },
       {
@@ -52,8 +92,13 @@ export const en: PortfolioContent = {
         skills: [
           { name: "Docker", icon: "container" },
           { name: "AWS", icon: "cloud" },
-          { name: "GitHub Actions", icon: "git-branch" },
-          { name: "Terraform", icon: "settings" },
+        ],
+      },
+      {
+        title: "Languages",
+        skills: [
+          { name: "C / C++", icon: "code" },
+          { name: "Rust", icon: "code" },
         ],
       },
       {
@@ -61,31 +106,32 @@ export const en: PortfolioContent = {
         skills: [
           { name: "Git", icon: "git-branch" },
           { name: "VS Code", icon: "edit" },
-          { name: "Figma", icon: "figma" },
+          { name: "Linux", icon: "terminal" },
         ],
       },
     ],
   },
   projects: {
-    title: "Projects",
+    title: "Work",
     items: [
       {
-        title: "Project Name 1",
-        description: "Describe the project here. Technologies used and problems solved.",
-        tech: ["React", "TypeScript", "Node.js"],
-        github: "https://github.com/yourname/project1",
-        live: "https://project1.example.com",
+        title: "web safari — an adventure inside the radio waves",
+        description:
+          "A team-built game for a university lab course, driven by WiFi packet sensors placed across Higashiyama Zoo & Botanical Gardens.",
+        tech: ["React", "TypeScript", "Node.js", "Python", "FastAPI"],
+        github: "https://github.com/ruki007/dama",
         image: "/images/project1.png",
       },
       {
-        title: "Project Name 2",
-        description: "Describe the project here.",
+        title: "Meidai Unofficial Wiki",
+        description:
+          "An unofficial wiki where Nagoya University students share campus information and events.",
         tech: ["Next.js", "PostgreSQL", "Docker"],
         github: "https://github.com/yourname/project2",
         image: "/images/project2.png",
       },
       {
-        title: "Project Name 3",
+        title: "Project 3",
         description: "Describe the project here.",
         tech: ["Go", "AWS", "Terraform"],
         github: "https://github.com/yourname/project3",
@@ -98,33 +144,40 @@ export const en: PortfolioContent = {
     title: "Experience",
     items: [
       {
-        company: "Company A",
-        role: "Senior Engineer",
-        period: "2022 - Present",
+        company: "NPO Kodomo Programming Fukyu Iinkai",
+        role: "Sales",
+        period: "2025.10 — Present",
         achievements: [
-          "Designed and implemented microservices architecture",
-          "Built CI/CD pipeline, improving deploy frequency by 50%",
+          "Ran hands-on programming workshops for elementary school students using Minecraft.",
+          "Explained to parents why programming literacy matters, supporting children's IT literacy.",
         ],
       },
       {
-        company: "Company B",
+        company: "ART-TRA Inc.",
         role: "Engineer",
-        period: "2019 - 2022",
+        period: "2025.7 — Present",
         achievements: [
-          "Developed SPA with React + TypeScript",
-          "Improved Lighthouse score by 30 points through performance optimization",
+          "Led frontend work on a large-scale web development project.",
+          "Drove development on a joint project with Chodai Co., Ltd., covering both frontend and backend.",
+          "Project lead for the engagement/navigation feature on the recruiting site.",
         ],
+        link: {
+          label: "CHODAI RECRUIT",
+          href: "https://www.chodai.co.jp/recruit/",
+        },
       },
     ],
   },
   contact: {
     title: "Contact",
-    subtitle: "Feel free to reach out",
+    subtitle: "Feel free to reach out.",
+    email: "your@email.com",
   },
   nav: {
-    about: "About",
-    skills: "Skills",
-    projects: "Projects",
+    about: "Background",
+    research: "Research",
+    skills: "Stack",
+    projects: "Work",
     experience: "Experience",
     contact: "Contact",
   },

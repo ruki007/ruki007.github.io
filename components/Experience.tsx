@@ -1,71 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/i18n";
-import { Briefcase } from "lucide-react";
+import { Section, Reveal } from "./Section";
 
 export function Experience() {
   const { t } = useTranslation();
 
   return (
-    <section id="experience" className="py-20 bg-[var(--muted)]">
-      <div className="max-w-4xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl font-bold mb-12 text-center"
-        >
-          {t.experience.title}
-        </motion.h2>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[var(--border)] -translate-x-1/2" />
-
-          {t.experience.items.map((item, i) => (
-            <motion.div
-              key={item.company}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className={`relative mb-10 md:w-1/2 ${
-                i % 2 === 0
-                  ? "md:pr-10 md:ml-0"
-                  : "md:pl-10 md:ml-auto"
-              } pl-12 md:pl-0`}
-            >
-              {/* Timeline dot */}
-              <div
-                className={`absolute top-1 w-8 h-8 bg-[var(--accent)] rounded-full flex items-center justify-center ${
-                  i % 2 === 0
-                    ? "left-0 md:-right-4 md:left-auto"
-                    : "left-0 md:-left-4"
-                }`}
-              >
-                <Briefcase size={14} className="text-[var(--accent-foreground)]" />
-              </div>
-
-              <div className="bg-[var(--card)] rounded-xl p-6 border border-[var(--border)]">
-                <span className="text-sm text-[var(--accent)] font-medium">
+    <Section
+      id="experience"
+      index="05"
+      title={t.experience.title}
+      kicker="Experience"
+    >
+      <ol>
+        {t.experience.items.map((item, i) => (
+          <Reveal key={item.company} delay={i * 0.08}>
+            <li className="grid gap-5 border-t border-rule py-9 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-3">
+                <span className="font-mono text-[11px] tracking-[0.14em] text-accent-text">
                   {item.period}
                 </span>
-                <h3 className="font-semibold text-lg mt-1">{item.role}</h3>
-                <p className="text-[var(--muted-foreground)] mb-3">{item.company}</p>
-                <ul className="space-y-1">
-                  {item.achievements.map((a, j) => (
-                    <li key={j} className="text-sm text-[var(--muted-foreground)] flex gap-2">
-                      <span className="text-[var(--accent)] mt-1">&#8226;</span>
-                      {a}
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-dim">
+                  {item.role}
+                </p>
+              </div>
+
+              <div className="md:col-span-9">
+                <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+                  <h3 className="font-display text-xl leading-snug md:text-2xl">
+                    {item.company}
+                  </h3>
+                  {item.link ? (
+                    <a
+                      href={item.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.18em] text-dim transition-colors hover:text-accent-text"
+                    >
+                      {item.link.label}
+                      <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                        ↗
+                      </span>
+                    </a>
+                  ) : null}
+                </div>
+                <ul className="mt-5 space-y-3">
+                  {item.achievements.map((a) => (
+                    <li
+                      key={a}
+                      className="flex gap-4 text-sm leading-loose text-dim"
+                    >
+                      <span
+                        className="mt-3 h-px w-4 shrink-0 bg-accent"
+                        aria-hidden="true"
+                      />
+                      <span>{a}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+            </li>
+          </Reveal>
+        ))}
+        <li className="border-t border-rule" aria-hidden="true" />
+      </ol>
+    </Section>
   );
 }

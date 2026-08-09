@@ -1,60 +1,64 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/i18n";
-import { ExternalLink, Globe, User, Mail } from "lucide-react";
-
-const links = [
-  { icon: ExternalLink, href: "https://github.com/yourname", label: "GitHub" },
-  { icon: Globe, href: "https://linkedin.com/in/yourname", label: "LinkedIn" },
-  { icon: User, href: "https://twitter.com/yourname", label: "X (Twitter)" },
-  { icon: Mail, href: "mailto:your@email.com", label: "Email" },
-];
+import { activeSocials } from "@/lib/links";
+import { Section, Reveal } from "./Section";
 
 export function Contact() {
   const { t } = useTranslation();
 
   return (
-    <section id="contact" className="py-20 max-w-4xl mx-auto px-4 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-3xl font-bold mb-4"
-      >
-        {t.contact.title}
-      </motion.h2>
+    <Section id="contact" index="06" title={t.contact.title} kicker="Get in touch">
+      <Reveal>
+        <p className="jp max-w-2xl font-display text-[clamp(1.6rem,3.6vw,2.6rem)] leading-[1.4]">
+          {t.contact.subtitle}
+        </p>
+      </Reveal>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-        className="text-[var(--muted-foreground)] mb-10"
-      >
-        {t.contact.subtitle}
-      </motion.p>
+      <Reveal delay={0.1}>
+        <a
+          href={`mailto:${t.contact.email}`}
+          className="group mt-10 inline-flex flex-wrap items-baseline gap-x-4 gap-y-2"
+        >
+          <span className="font-mono text-[10px] tracking-[0.24em] text-dim">
+            EMAIL
+          </span>
+          <span className="font-display text-2xl underline decoration-rule decoration-1 underline-offset-8 transition-colors duration-300 group-hover:text-accent-text group-hover:decoration-accent md:text-4xl">
+            {t.contact.email}
+          </span>
+        </a>
+      </Reveal>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="flex justify-center gap-6"
-      >
-        {links.map(({ icon: Icon, href, label }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="p-4 bg-[var(--muted)] rounded-xl hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] transition-colors group"
-          >
-            <Icon size={28} />
-          </a>
+      <Reveal delay={0.15}>
+        <div className="mt-14 w-full">
+          <div className="waveguide" />
+        </div>
+      </Reveal>
+
+      <ul className="mt-2">
+        {activeSocials.map((s, i) => (
+          <Reveal key={s.label} delay={0.2 + i * 0.06}>
+            <li>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-baseline justify-between border-b border-rule py-6 transition-colors duration-300 hover:text-accent-text"
+              >
+                <span className="font-display text-xl md:text-2xl">
+                  {s.label}
+                </span>
+                <span className="flex items-baseline gap-4 font-mono text-[11px] tracking-[0.14em] text-dim transition-colors duration-300 group-hover:text-accent-text">
+                  {s.handle}
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    ↗
+                  </span>
+                </span>
+              </a>
+            </li>
+          </Reveal>
         ))}
-      </motion.div>
-    </section>
+      </ul>
+    </Section>
   );
 }

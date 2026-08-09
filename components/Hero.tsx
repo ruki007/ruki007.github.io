@@ -2,91 +2,137 @@
 
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/i18n";
-import { ChevronDown } from "lucide-react";
+import { SpecRow } from "./Section";
+
+const rise = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-pink-600/20 dark:from-blue-400/10 dark:via-purple-400/10 dark:to-pink-400/10" />
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+    <section
+      id="top"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden pt-16"
+    >
+      {/* Coordinates rail — Nagoya, where the work happens */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 pt-8 font-mono text-[10px] tracking-[0.24em] text-dim md:px-10"
+      >
+        <span>N 35.1550° / E 136.9660°</span>
+        <span className="hidden sm:inline">PORTFOLIO — 2026</span>
+      </motion.div>
 
-      <div className="max-w-4xl mx-auto px-4 text-center">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        transition={{ staggerChildren: 0.09, delayChildren: 0.15 }}
+        className="mx-auto w-full max-w-[1280px] px-6 py-12 md:px-10"
+      >
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-lg text-[var(--muted-foreground)] mb-2"
+          variants={rise}
+          transition={{ duration: 0.8, ease }}
+          className="font-mono text-[11px] tracking-[0.2em] text-dim"
         >
           {t.hero.greeting}
         </motion.p>
 
+        {/* The name, at poster scale */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-bold mb-4"
+          variants={rise}
+          transition={{ duration: 0.9, ease }}
+          className="mt-6 font-display text-[clamp(3.2rem,13vw,10.5rem)] font-semibold leading-[0.92] tracking-tight"
         >
           {t.hero.name}
         </motion.h1>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl md:text-3xl font-semibold text-[var(--accent)] mb-4"
-        >
-          {t.hero.title}
-        </motion.h2>
-
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-lg text-[var(--muted-foreground)] mb-8 max-w-2xl mx-auto"
+          variants={rise}
+          transition={{ duration: 0.8, ease }}
+          className="mt-4 font-mono text-[11px] tracking-[0.34em] text-accent-text"
         >
-          {t.hero.tagline}
+          {t.hero.nameLatin}
         </motion.p>
 
+        {/* The optical link: a hairline rail with a photon travelling it */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex gap-4 justify-center"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.2, delay: 0.55, ease }}
+          style={{ transformOrigin: "left" }}
+          className="mt-10 w-full"
         >
-          <a
-            href="#projects"
-            className="px-6 py-3 bg-[var(--accent)] text-[var(--accent-foreground)] rounded-lg font-medium hover:opacity-90 transition-opacity"
-          >
-            {t.hero.ctaWork}
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-3 border border-[var(--border)] rounded-lg font-medium hover:bg-[var(--muted)] transition-colors"
-          >
-            {t.hero.ctaContact}
-          </a>
+          <div className="waveguide" />
         </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
+        <div className="mt-10 grid gap-10 md:grid-cols-12">
+          <motion.div
+            variants={rise}
+            transition={{ duration: 0.8, ease }}
+            className="md:col-span-7"
+          >
+            <p className="jp font-display text-2xl leading-relaxed md:text-3xl">
+              {t.hero.title}
+            </p>
+            <p className="jp mt-4 max-w-xl text-sm leading-loose text-dim md:text-base">
+              {t.hero.tagline}
+            </p>
+
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-3 bg-accent px-6 py-3 font-mono text-[11px] tracking-[0.18em] text-accent-ink transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                {t.hero.ctaWork}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-3 border border-rule px-6 py-3 font-mono text-[11px] tracking-[0.18em] transition-colors duration-300 hover:border-accent hover:text-accent-text"
+              >
+                {t.hero.ctaContact}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Spec sheet */}
+          <motion.div
+            variants={rise}
+            transition={{ duration: 0.8, ease }}
+            className="space-y-3 md:col-span-5 md:pt-2"
+          >
+            {t.hero.meta.map((item) => (
+              <SpecRow key={item.label} item={item} />
+            ))}
+          </motion.div>
+        </div>
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        transition={{ duration: 1, delay: 1.1 }}
+        className="mx-auto flex w-full max-w-[1280px] items-center gap-3 px-6 pb-10 font-mono text-[10px] tracking-[0.3em] text-dim md:px-10"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ChevronDown size={24} className="text-[var(--muted-foreground)]" />
-        </motion.div>
+          ↓
+        </motion.span>
+        SCROLL
       </motion.div>
     </section>
   );
