@@ -15,22 +15,8 @@ export function Contact() {
         </p>
       </Reveal>
 
-      <Reveal delay={0.1}>
-        <a
-          href={`mailto:${t.contact.email}`}
-          className="group mt-10 inline-flex flex-wrap items-baseline gap-x-4 gap-y-2"
-        >
-          <span className="font-mono text-[10px] tracking-[0.24em] text-dim">
-            EMAIL
-          </span>
-          <span className="font-display text-2xl underline decoration-rule decoration-1 underline-offset-8 transition-colors duration-300 group-hover:text-accent-text group-hover:decoration-accent md:text-4xl">
-            {t.contact.email}
-          </span>
-        </a>
-      </Reveal>
-
       <Reveal delay={0.15}>
-        <div className="mt-14 w-full">
+        <div className="mt-12 w-full">
           <div className="waveguide" />
         </div>
       </Reveal>

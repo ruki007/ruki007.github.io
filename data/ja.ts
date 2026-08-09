@@ -4,7 +4,7 @@ export const ja: PortfolioContent = {
   hero: {
     greeting: "ご高覧いただきありがとうございます。",
     name: "松永 浩輝",
-    nameLatin: "MATSUNAGA KOKI — ruki",
+    nameLatin: "MATSUNAGA HARUKI — ruki",
     title: "名古屋大学 工学部 電気電子情報工学科",
     tagline:
       "光ネットワークを研究しながら、Web を書いています。",
@@ -38,12 +38,13 @@ export const ja: PortfolioContent = {
   },
   research: {
     title: "研究",
-    theme: "高並列度光ネットワークにおける\nパス・リンク混合型高信頼化",
-    summary:
-      "リンクの並列度が高い光ネットワークを対象に、パス保護とリンク内保護を組み合わせた混合型の高信頼化方式を検討し、その性能を評価しています。",
     meta: [
       { label: "RESEARCH FIELD", value: "光ネットワーク" },
-      { label: "LAB", value: "長谷川 浩 研究室" },
+      {
+        label: "LAB",
+        value: "長谷川 浩 研究室（PN Lab.）",
+        href: "https://www.nuee.nagoya-u.ac.jp/labs/pnlab/",
+      },
       { label: "KEYWORDS", value: "Protection / Link Parallelism" },
     ],
     outputsLabel: "発表・論文",
@@ -115,6 +116,13 @@ export const ja: PortfolioContent = {
     title: "成果物",
     items: [
       {
+        title: "marumado 社内システム開発",
+        description: "社内業務システムの開発を担当。",
+        tech: ["TypeScript", "Python", "GCP", "Docker"],
+        live: "https://marumado.jp/",
+        image: "/images/marumado.png",
+      },
+      {
         title: "web safari — 電波内の人間と冒険にでかけよう",
         description:
           "大学の実験内でチーム開発した、東山動植物園内の WiFi パケットセンサを活用したゲーム。",
@@ -129,14 +137,6 @@ export const ja: PortfolioContent = {
         tech: ["Next.js", "PostgreSQL", "Docker"],
         github: "https://github.com/yourname/project2",
         image: "/images/project2.png",
-      },
-      {
-        title: "プロジェクト名 3",
-        description: "プロジェクトの説明をここに書きます。",
-        tech: ["Go", "AWS", "Terraform"],
-        github: "https://github.com/yourname/project3",
-        live: "https://project3.example.com",
-        image: "/images/project3.png",
       },
     ],
   },
@@ -171,7 +171,6 @@ export const ja: PortfolioContent = {
   contact: {
     title: "連絡先",
     subtitle: "お気軽にご連絡ください。",
-    email: "your@email.com",
   },
   nav: {
     about: "経歴",

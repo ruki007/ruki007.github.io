@@ -76,7 +76,21 @@ export function SpecRow({ item }: { item: MetaItem }) {
     <div className="flex items-baseline font-mono text-[11px] tracking-[0.14em]">
       <span className="shrink-0 text-dim">{item.label}</span>
       <span className="leader" aria-hidden="true" />
-      <span className="min-w-0 text-right">{item.value}</span>
+      {item.href ? (
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group min-w-0 text-right transition-colors hover:text-accent-text"
+        >
+          {item.value}
+          <span className="inline-block pl-1.5 transition-transform duration-300 group-hover:translate-x-0.5">
+            ↗
+          </span>
+        </a>
+      ) : (
+        <span className="min-w-0 text-right">{item.value}</span>
+      )}
     </div>
   );
 }

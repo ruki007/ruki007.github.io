@@ -17,19 +17,8 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-between overflow-hidden pt-16"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-16"
     >
-      {/* Coordinates rail — Nagoya, where the work happens */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
-        className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 pt-8 font-mono text-[10px] tracking-[0.24em] text-dim md:px-10"
-      >
-        <span>N 35.1550° / E 136.9660°</span>
-        <span className="hidden sm:inline">PORTFOLIO — 2026</span>
-      </motion.div>
-
       <motion.div
         initial="hidden"
         animate="visible"
@@ -124,7 +113,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.1 }}
-        className="mx-auto flex w-full max-w-[1280px] items-center gap-3 px-6 pb-10 font-mono text-[10px] tracking-[0.3em] text-dim md:px-10"
+        className="absolute inset-x-0 bottom-10 mx-auto flex w-full max-w-[1280px] items-center gap-3 px-6 font-mono text-[10px] tracking-[0.3em] text-dim md:px-10"
       >
         <motion.span
           animate={{ y: [0, 6, 0] }}

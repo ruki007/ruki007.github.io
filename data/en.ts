@@ -3,8 +3,8 @@ import type { PortfolioContent } from "@/lib/types";
 export const en: PortfolioContent = {
   hero: {
     greeting: "Thank you for stopping by.",
-    name: "Koki Matsunaga",
-    nameLatin: "MATSUNAGA KOKI — ruki",
+    name: "Haruki Matsunaga",
+    nameLatin: "MATSUNAGA HARUKI — ruki",
     title: "Nagoya University, School of Engineering (EEI)",
     tagline: "Researching optical networks. Writing the web on the side.",
     meta: [
@@ -37,13 +37,13 @@ export const en: PortfolioContent = {
   },
   research: {
     title: "Research",
-    theme:
-      "Hybrid in-link and path protection\nfor highly parallel optical networks",
-    summary:
-      "Targeting optical networks with high link parallelism, this work studies a hybrid protection scheme that combines path protection with in-link protection, and evaluates its performance.",
     meta: [
       { label: "RESEARCH FIELD", value: "Optical Networks" },
-      { label: "LAB", value: "Hasegawa Lab." },
+      {
+        label: "LAB",
+        value: "Hasegawa Lab. (PN Lab.)",
+        href: "https://www.nuee.nagoya-u.ac.jp/labs/pnlab/",
+      },
       { label: "KEYWORDS", value: "Protection / Link Parallelism" },
     ],
     outputsLabel: "Publications & talks",
@@ -115,6 +115,13 @@ export const en: PortfolioContent = {
     title: "Work",
     items: [
       {
+        title: "marumado — internal systems",
+        description: "Development of internal business systems.",
+        tech: ["TypeScript", "Python", "GCP", "Docker"],
+        live: "https://marumado.jp/",
+        image: "/images/marumado.png",
+      },
+      {
         title: "web safari — an adventure inside the radio waves",
         description:
           "A team-built game for a university lab course, driven by WiFi packet sensors placed across Higashiyama Zoo & Botanical Gardens.",
@@ -129,14 +136,6 @@ export const en: PortfolioContent = {
         tech: ["Next.js", "PostgreSQL", "Docker"],
         github: "https://github.com/yourname/project2",
         image: "/images/project2.png",
-      },
-      {
-        title: "Project 3",
-        description: "Describe the project here.",
-        tech: ["Go", "AWS", "Terraform"],
-        github: "https://github.com/yourname/project3",
-        live: "https://project3.example.com",
-        image: "/images/project3.png",
       },
     ],
   },
@@ -171,7 +170,6 @@ export const en: PortfolioContent = {
   contact: {
     title: "Contact",
     subtitle: "Feel free to reach out.",
-    email: "your@email.com",
   },
   nav: {
     about: "Background",

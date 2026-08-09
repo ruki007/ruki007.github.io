@@ -39,6 +39,8 @@ export interface ResearchOutput {
 export interface MetaItem {
   label: string;
   value: string;
+  /** When set, the value becomes an outbound link. */
+  href?: string;
 }
 
 export interface PortfolioContent {
@@ -66,9 +68,6 @@ export interface PortfolioContent {
   };
   research: {
     title: string;
-    /** One-line research theme, set large. */
-    theme: string;
-    summary: string;
     meta: MetaItem[];
     outputsLabel: string;
     outputs: ResearchOutput[];
@@ -88,7 +87,6 @@ export interface PortfolioContent {
   contact: {
     title: string;
     subtitle: string;
-    email: string;
   };
   nav: {
     about: string;
